@@ -89,7 +89,14 @@ public class NumberTriangle {
      *
      */
     public int retrieve(String path) {
-        return -1;
+        if (path.equals("")) {
+            return this.root;
+        } else {
+            char first = path.charAt(0);
+            if (first == 'l' && left != null) return left.retrieve(path.substring(1));
+            else if (first == 'r' && right != null) return right.retrieve(path.substring(1));
+            return -1;
+        }
     }
 
     /** Read in the NumberTriangle structure from a file.
